@@ -1,8 +1,14 @@
-export default function Navbar() {
+import { ExportToCSV } from "./export";
+
+export default function Navbar({ data }) {
+  function downloadCSV(data) {
+    ExportToCSV(data);
+  }
+
   return (
     <div>
-      <nav className="bg-white border-gray-200 px-2 sm:px-4 py-6 dark:bg-gray-900">
-        <div className="container px-5 flex flex-wrap justify-between items-center mx-auto">
+      <nav className="bg-white border-gray-200 px-6 py-6 dark:bg-gray-900 flex justify-between items-center">
+        <div className="container ">
           <a href="/" className="flex gap-2 items-center">
             <svg
               enableBackground="new 0 0 32 32"
@@ -124,6 +130,16 @@ export default function Navbar() {
               Paises
             </span>
           </a>
+        </div>
+        <div className="flex justify-end">
+          <button
+            className="dark:text-white dark:bg-gray-400 rounded md:py-4 md:px-3 hover:bg-gray-500 transition-all"
+            onClick={() => {
+              downloadCSV(data);
+              console.log(data);
+            }}>
+            Converter para EXCEL
+          </button>
         </div>
       </nav>
     </div>
