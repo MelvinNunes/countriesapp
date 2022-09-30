@@ -1,14 +1,39 @@
-import { ExportToCSV } from "./export";
+import { ExportToCSV, exportToXML } from "./export";
 
 export default function Navbar({ data }) {
   function downloadCSV(data) {
     ExportToCSV(data);
   }
 
+  function downloadXML(data) {
+    exportToXML(data);
+    // function OBJtoXML(data) {
+    //   var xml = "";
+    //   for (var prop in data) {
+    //     xml += data[prop] instanceof Array ? "" : "<" + prop + ">";
+    //     if (data[prop] instanceof Array) {
+    //       for (var array in data[prop]) {
+    //         xml += "<" + prop + ">";
+    //         xml += OBJtoXML(new Object(data[prop][array]));
+    //         xml += "</" + prop + ">";
+    //       }
+    //     } else if (typeof data[prop] == "object") {
+    //       xml += OBJtoXML(new Object(data[prop]));
+    //     } else {
+    //       xml += data[prop];
+    //     }
+    //     xml += data[prop] instanceof Array ? "" : "</" + prop + ">";
+    //   }
+    //   var xml = xml.replace(/<\/?[0-9]{1,}>/g, "");
+    //   return xml;
+    // }
+    // console.log(OBJtoXML(data));
+  }
+
   return (
     <div>
-      <nav className="bg-white border-gray-200 px-6 py-6 dark:bg-gray-900 flex justify-between items-center">
-        <div className="container ">
+      <nav className="bg-white w-full border-gray-200 gap-5 md:gap-0 px-6 py-6 dark:bg-gray-900 flex flex-col md:flex-row md:justify-between items-center">
+        <div className="md:container ">
           <a href="/" className="flex gap-2 items-center">
             <svg
               enableBackground="new 0 0 32 32"
@@ -131,15 +156,25 @@ export default function Navbar({ data }) {
             </span>
           </a>
         </div>
-        <div className="flex justify-end">
-          <button
-            className="dark:text-white dark:bg-gray-400 rounded md:py-4 md:px-3 hover:bg-gray-500 transition-all"
-            onClick={() => {
-              downloadCSV(data);
-              console.log(data);
-            }}>
-            Converter para EXCEL
-          </button>
+        <div className="flex flex-col md:flex-row md:justify-end gap-3">
+          <div>
+            <button
+              className="dark:text-white w-full py-3 dark:bg-gray-400 rounded md:py-4 md:px-3 hover:bg-gray-500 transition-all"
+              onClick={() => {
+                downloadCSV(data);
+              }}>
+              Converter para EXCEL
+            </button>
+          </div>
+          <div>
+            <button
+              className="dark:text-white w-full py-3 dark:bg-gray-400 rounded md:py-4 md:px-3 hover:bg-gray-500 transition-all"
+              onClick={() => {
+                downloadXML(data);
+              }}>
+              Converter para XML
+            </button>
+          </div>
         </div>
       </nav>
     </div>

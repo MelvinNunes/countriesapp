@@ -1,6 +1,6 @@
 export async function ExportToCSV(data) {
   var headers = {
-    name: "Nome do Pais".replace(/,/g, ""), // remove commas to avoid errors
+    name: "Nome do Pais",
     nativeName: "Nome Nativo",
     region: "Regiao",
     subregion: "Sub-Regiao",
@@ -51,7 +51,6 @@ function exportCSVFile(headers, items, fileTitle) {
     var link = document.createElement("a");
     if (link.download !== undefined) {
       // feature detection
-      // Browsers that support HTML5 download attribute
       var url = URL.createObjectURL(blob);
       link.setAttribute("href", url);
       link.setAttribute("download", exportedFilenmae);
@@ -81,23 +80,48 @@ function convertToCSV(objArray) {
   return str;
 }
 
-function OBJtoXML(obj) {
+function OBJtoXML(data) {
   var xml = "";
-  for (var prop in obj) {
-    xml += obj[prop] instanceof Array ? "" : "<" + prop + ">";
-    if (obj[prop] instanceof Array) {
-      for (var array in obj[prop]) {
+  for (var prop in data) {
+    xml += data[prop] instanceof Array ? "" : "<" + prop + ">";
+    if (data[prop] instanceof Array) {
+      for (var array in data[prop]) {
         xml += "<" + prop + ">";
-        xml += OBJtoXML(new Object(obj[prop][array]));
+        xml += OBJtoXML(new Object(data[prop][array]));
         xml += "</" + prop + ">";
       }
-    } else if (typeof obj[prop] == "object") {
-      xml += OBJtoXML(new Object(obj[prop]));
+    } else if (typeof data[prop] == "object") {
+      xml += OBJtoXML(new Object(data[prop]));
     } else {
-      xml += obj[prop];
+      xml += data[prop];
     }
-    xml += obj[prop] instanceof Array ? "" : "</" + prop + ">";
+    xml += data[prop] instanceof Array ? "" : "</" + prop + ">";
   }
-  xml = xml.replace(/<\/?[0-9]{1,}>/g, "");
+  var xml = xml.replace(/<\/?[0-9]{1,}>/g, "");
   return xml;
+}
+
+export function exportToXML(data) {
+  var xmltext = OBJtoXML(data);
+
+  var filename = "paises.xml";
+
+  var blob = new Blob([xmltext], { type: "text/plain" });
+  if (navigator.msSaveBlob) {
+    // IE 10+
+    navigator.msSaveBlob(blob, filename);
+  } else {
+    var link = document.createElement("a");
+    if (link.download !== undefined) {
+      // feature detection
+      // Browsers that support HTML5 download attribute
+      var url = URL.createObjectURL(blob);
+      link.setAttribute("href", url);
+      link.setAttribute("download", filename);
+      link.style.visibility = "hidden";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  }
 }

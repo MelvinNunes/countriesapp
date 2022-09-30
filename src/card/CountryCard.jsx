@@ -1,7 +1,7 @@
 export default function CountryCard(props) {
   return (
     <div className="flex shadow-md transition-all duration-500 hover:scale-105 hover:shadow-lg outline-none">
-      <div class="w-96 h-[500px] bg-white rounded-lg border dark:border-none border-gray-200 shadow-lg dark:bg-gray-800">
+      <div class="w-96  h-[500px] bg-white rounded-lg border dark:border-none border-gray-200 shadow-lg dark:bg-gray-800">
         <img
           className="w-full rounded-t-md h-48 bg-cover"
           src={props?.flag}
