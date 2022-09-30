@@ -9,7 +9,7 @@ O projecto faz o consumo de uma API REST (https://restcountries.com) de forma pr
 - Foi usada a biblioteca AXIOS para as requisições
 - Foi usado JS puro para a conversão de documentos!
 
-Pode ser acessado atráves do link:
+Pode ser acessado atráves do link: https://countriesapp-seven.vercel.app/
 
 # INSTALAR O PROJECTO
 
