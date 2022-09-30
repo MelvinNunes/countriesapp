@@ -36,6 +36,7 @@ function App() {
       .get("https://restcountries.com/v3.1/all")
       .then((res) => {
         setCountries(res.data);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -59,7 +60,7 @@ function App() {
               {countries.map((data, key) => {
                 return (
                   <CountryCard
-                    name={data.name.official}
+                    name={data.name.common}
                     nativeName={data.name.nativeName?.eng?.common}
                     region={data.region}
                     subregion={data.subregion}

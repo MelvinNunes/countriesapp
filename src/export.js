@@ -17,7 +17,7 @@ export async function ExportToCSV(data) {
   //Format Data
   itemsNotFormatted.forEach((item) => {
     itemsFormatted.push({
-      name: item.name.official,
+      name: item.name.common,
       nativeName: item.name.nativeName?.eng?.common ?? "Nenhum",
       region: item.region,
       subregion: item.subregion ?? "Nenhum",
