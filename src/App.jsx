@@ -54,7 +54,7 @@ function App() {
           <h1 className="font-bold text-4xl text-center my-6">
             Conheça o Mundo!
           </h1>
-          <div className="flex justify-center px-7 overflow-y-hidden">
+          <div className="flex justify-center p-7 overflow-y-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
               {countries.map((data, key) => {
                 return (
