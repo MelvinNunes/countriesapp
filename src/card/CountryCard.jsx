@@ -13,7 +13,7 @@ export default function CountryCard(props) {
             {props?.name}
           </h5>
           {props.nativeName && (
-            <h6 className="text-gray-200 font-semibold flex gap-2">
+            <h6 className="text-black font-semibold flex gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-5"
@@ -31,7 +31,7 @@ export default function CountryCard(props) {
               Nome nativo: {props.nativeName}
             </h6>
           )}
-          <h6 className="text-gray-300 font-medium flex gap-2">
+          <h6 className="text-black font-medium flex gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-5"
@@ -50,7 +50,7 @@ export default function CountryCard(props) {
             </svg>
             Região: {props.region}
           </h6>
-          <h6 className="text-gray-300 font-medium flex gap-2">
+          <h6 className="text-black font-medium flex gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-5"
@@ -68,7 +68,7 @@ export default function CountryCard(props) {
             </svg>
             Sub-Região: {props?.subregion}
           </h6>
-          <h6 className="text-gray-300 font-medium flex gap-2">
+          <h6 className="text-black font-medium flex gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-5"
@@ -86,7 +86,7 @@ export default function CountryCard(props) {
             </svg>
             População: {props?.population}
           </h6>
-          <h6 className="text-gray-300 font-medium flex gap-2">
+          <h6 className="text-black font-medium flex gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-5"
@@ -102,7 +102,7 @@ export default function CountryCard(props) {
             </svg>
             Área: {props?.area}
           </h6>
-          <h6 className="text-gray-300 font-medium flex gap-2">
+          <h6 className="text-black font-medium flex gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-5"
